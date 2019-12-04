@@ -16,7 +16,6 @@ module.exports = {
     rules:[
       {
         test: /\.js$/,
-        //exclude: /(node_modules|bower_components)/,
         include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'babel-loader',
@@ -26,11 +25,11 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.css$/, //匹配css文件
         use: ['style-loader', 'css-loader'], // 多个loader从右到左处理
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,  //匹配这些格式的图片
         loader: 'url-loader',
         options: {
           limit: 1000,
@@ -42,11 +41,6 @@ module.exports = {
         include: path.resolve(__dirname, 'src'),
         loader: 'vue-loader'
       },
-
-      // {
-      //   test: /\.css$/,
-      //   use: ['vue-style-loader', 'css-loader'],
-      // },
       new VueLoaderPlugin()
     ]
   },
