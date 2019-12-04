@@ -4,16 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-  mode:'production',
-  entry:{
+  mode:'production',  //模式:生产环境
+  entry:{ // 入口
     app:path.resolve(__dirname,'src/index.js')
   },
-  output:{
-    filename:'static/js/[name].bundle.js',
+  output:{  //出口(打包生成js文件目录的配置)
+    filename:'static/js/[name].bundle.js',  //[name]读取的是app
     path:path.resolve(__dirname,'dist')
   },
-  module:{
-    
+  module:{  //模块加载器
     rules:[
       {
         test: /\.js$/,
@@ -44,17 +43,17 @@ module.exports = {
         loader: 'vue-loader'
       },
 
-      {
-        test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader'],
-      },
+      // {
+      //   test: /\.css$/,
+      //   use: ['vue-style-loader', 'css-loader'],
+      // },
       new VueLoaderPlugin()
     ]
   },
-  plugins:[
+  plugins:[ //插件
     new HtmlWebpackPlugin({
-      template: 'index.html',
-      filename: 'index.html'
+      template: 'index.html', //将哪个页面当做模板(即在根目录找)
+      filename: 'index.html'  //生成页面在跟目录(即上面的出口配置)
     })
   ],
   devServer:{
