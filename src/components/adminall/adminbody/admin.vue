@@ -1,12 +1,25 @@
 <template>
   <div class="adminbody">
-    <h1>{{person.id}} ---- {{person.name}}</h1>
+    <AdminNav v-for="(person,index) in persons" :key='person.id' :person="person"/>
   </div>
 </template>
 
 <script>
+import AdminNav from '../adminNav/adminNav'
 export default {
-  props:['person']
+  data(){
+    return{
+      persons:[
+        {id:1,name:'saber',age:11,sex:'男'},
+        {id:2,name:'lancer',age:12,sex:'女'},
+        {id:3,name:'archer',age:13,sex:'男'},
+        {id:4,name:'caster',age:14,sex:'女'}
+      ]
+    }
+  },
+  components:{
+    AdminNav
+  }
 }
 </script>
 
@@ -14,7 +27,6 @@ export default {
   .adminbody{
     width: 100%;
     height: 100%;
-    color: red;
     background-image: url('../../../assets/imgs/bgadmin.jpg');
     background-position: center;
     background-size: 2560px;
