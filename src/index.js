@@ -1,9 +1,11 @@
-import Logo from './assets/imgs/bglogin1.jpg'
-import "./assets/css/mycss.css"
+import Vue from "vue"
+import App from "./App"
 
-const image = new Image()
-image.src = Logo
-document.body.appendChild(image)
-console.log('Hello Webpack!')
-document.getElementById('root')
-.innerHTML = '<h1>Hello3332</h1>'
+
+new Vue ({
+  el:'#root',
+  components:{
+    App
+  },
+  template:'<App/>'
+})
