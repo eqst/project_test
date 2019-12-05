@@ -24,7 +24,7 @@ module.exports = {
       },
       //匹配js
       {
-        test:'/\.js$/',
+        test:/\.js$/,
         include:path.resolve(__dirname,"src"),
         use:{
           loader:'babel-loader',
@@ -35,12 +35,12 @@ module.exports = {
       },
       //匹配css
       {
-        test:'/\.css$/',
-        use: ['vue-style-loader', 'css-loader'],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'], // 多个loader从右到左处理
       },
       //匹配图片
       {
-        test:'/\.(png|jpe?g|gif|svg)(\?.*)?$/',
+        test:/\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 1000,
